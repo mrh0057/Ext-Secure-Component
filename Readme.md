@@ -26,7 +26,7 @@ Now if you have a component that only an admin can view render you would have:
 If you are using a container the secure render function will follow also follow items. Example:
    Ex.ux.secure.render(
     {
-        roles: ["admin"]
+        roles: ["admin"],
         items: [
                 {
                         :roles ["admin"]
