@@ -7,10 +7,18 @@ describe('Security Render Controller Tests', function() {
   it('matching roles test array', function() {
     Ext.ux.secure.roles = ["admin", "user"];
     var testObject = [
-      {id: "obj1", roles : "user"},
-      {id: "obj2", roles : "bob"}
+      {id: "obj1", roles : ["user"]},
+      {id: "obj2", roles : ["bob"]}
     ];
     Ext.ux.secure.render(testObject);
+  });
+
+  it('check roles works with a list of roles valid', function() {
+    expect(Ext.ux.secure.checkRoles(['admin', 'something', 'else'])).toEqual(true);
+  });
+
+  it('Check roles works with a list of invalid roles', function() {
+    expect(Ext.ux.secure.checkRoles(['wrong', 'role'])).toEqual(false);
   });
 
   it('Matching roles test single', function() {
