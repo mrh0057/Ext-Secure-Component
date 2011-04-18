@@ -30,7 +30,7 @@ If you are using a container the secure render function will follow also follow 
         roles: ["admin"],
         items: [
                 {
-                        :roles ["admin"]
+                        roles: ["admin"]
                 }
         ]
     })
