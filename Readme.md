@@ -46,9 +46,9 @@ Ext.ux.secure.execute(<roles>, <func>, <scope>). Example:
 Suppose you have some statements that need only to execute when
 someone is the admin for the site. 
 
-  myFunc: function() {
-    // Statements to execute for other roles.
-    Ext.ux.secure.execute('admin', function() {
-      // My Statements to only execute if admin.
-    }, this)
-  }
+        myFunc: function() {
+                 // Statements to execute for other roles.
+                 Ext.ux.secure.execute('admin', function() {
+                           // My Statements to only execute if admin.
+                 }, this)
+       }
