@@ -36,3 +36,19 @@ If you are using a container the secure render function will follow also follow 
     })
 
 The license is whatever license you have with ExtJS
+
+Executing Functions
+------------------
+
+If you what to protect statements from being called you can use
+Ext.ux.secure.execute(<roles>, <func>, <scope>). Example:
+
+Suppose you have some statements that need only to execute when
+someone is the admin for the site. 
+
+  myFunc: function() {
+    // Statements to execute for other roles.
+    Ext.ux.secure.execute('admin', function() {
+      // My Statements to only execute if admin.
+    }, this)
+  }
