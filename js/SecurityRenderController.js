@@ -36,11 +36,11 @@ Ext.ux.SecurityRenderController.prototype = {
   //private
   processSingleArgument : function(argument) {
     var renderObj = undefined;
-    var argument = arguments[0];
-    if (argument instanceof Array) {
-      renderObj = this.processObjArray(argument);
+    var arg = arguments[0];
+    if (arg instanceof Array) {
+      renderObj = this.processObjArray(arg);
     } else {
-      renderObj = this.processObj(argument);
+      renderObj = this.processObj(arg);
     }
     return renderObj;
   },
@@ -57,7 +57,7 @@ Ext.ux.SecurityRenderController.prototype = {
   },
 
   processObj : function(obj) {
-    var renderObj = []
+    var renderObj = [];
     if (this.isUserAbleToView(obj)) {
       renderObj = [obj];
     }
@@ -111,6 +111,19 @@ Ext.ux.SecurityRenderController.prototype = {
       }
     }
     return false;
+  },
+
+  /**
+   * Used to execute a secure function.
+   *
+   * @param roles The roles the user has to have in order to execute the function.
+   * @param func The function to execute.
+   * @param scope The scope to call the function with.
+   */
+  execute: function(roles, func, scope) {
+    if (this.checkRoles(roles)) {
+      func.call(scope);
+    }
   }
 };
 

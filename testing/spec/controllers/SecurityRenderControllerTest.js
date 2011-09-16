@@ -52,7 +52,7 @@ describe('Security Render Controller Tests', function() {
     var testObject = {id : 'hello'};
     var validObject = {id : 'hello'};
     expect(Ext.ux.secure.render(testObject)).toEqual([validObject]);
-  })
+  });
 
   it('Test nested items', function() {
     var items = [
@@ -76,5 +76,27 @@ describe('Security Render Controller Tests', function() {
     var valid = {id : 'hello', items : [{id: "obj1", roles : 'admin'}]};
 
     expect(Ext.ux.secure.renderTop(testObject)).toEqual(valid);
+  });
+
+  it('Test execute valid', function() {
+    var executed = undefined;
+    var testFunc = function() {
+      executed = true;
+    };
+
+    Ext.ux.secure.execute(['admin'], testFunc, this);
+
+    expect(executed).toBeTruthy();
+  });
+
+  it('Test execute invalid', function() {
+    var executed = false;
+    var testFunc = function() {
+      executed = true;
+    };
+
+    Ext.ux.secure.execute(['something_else'], testFunc, this);
+
+    expect(executed).toBeFalsy();
   });
 });
